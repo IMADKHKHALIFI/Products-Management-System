@@ -72,10 +72,7 @@ Elle propose une expérience utilisateur professionnelle, responsive, avec un mo
 
 > Place tes images dans `src/main/resources/images/` puis référence-les ainsi :
 
-- ![Dashboard](src/main/resources/images/dashboard.png)
-- ![Liste des produits](src/main/resources/images/products-list.png)
-- ![Mode sombre](src/main/resources/images/dark-mode.png)
-- ![Edition produit](src/main/resources/images/edit-product.png)
+- ![Dashboard](src/main/resources/images/dashbord.png)
 
 ---
 
