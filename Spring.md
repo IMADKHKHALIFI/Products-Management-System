@@ -1,7 +1,8 @@
 # GestionProduits+ – Application Spring Boot de gestion de produits
 
-![Dashboard](src/main/resources/images/dashboard.png)
-![Liste des produits](src/main/resources/images/products-list.png)
+
+![Dashboard](src/main/resources/images/dashbord.png)
+![Liste des produits](src/main/resources/images/index.png)
 
 ---
 
@@ -145,10 +146,14 @@ src/
 
 > Place tes images dans `src/main/resources/images/` puis référence-les ainsi :
 
-- ![Dashboard](src/main/resources/images/dashboard.png)
-- ![Liste des produits](src/main/resources/images/products-list.png)
-- ![Mode sombre](src/main/resources/images/dark-mode.png)
-- ![Edition produit](src/main/resources/images/edit-product.png)
+- ![Dashboard](src/main/resources/images/dashbord.png)
+- ![LOGIN](src/main/resources/images/LOGIN.png)
+- ![editProduct](src/main/resources/images/editProduct.png)
+- ![editProduct](src/main/resources/images/editProduct.png)
+- ![le_reglage_de_authontification](src/main/resources/images/le_reglage_de_authontification.png)
+- ![newProduct](src/main/resources/images/newProduct.png)
+- ![notAuthenticated](src/main/resources/images/notAuthenticated.png)
+- ![HANDL_the_validation_param](src/main/resources/images/HANDL_the_validation_param.png))
 
 ---
 
@@ -183,5 +188,5 @@ src/
 
 ## Auteur
 
-- IMAD KHKHAIL (ou ton nom)
+- IMAD EL KHELYFY
 - Année 2025
