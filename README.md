@@ -126,7 +126,7 @@ Place ici tes captures d’écran pour la documentation :
 
 ## 🧑‍💻 Auteur
 
-- IMAD KHKHAIL (ou ton nom)
+- IMAD EL KHELYFY
 - Année 2025
 
 ---
