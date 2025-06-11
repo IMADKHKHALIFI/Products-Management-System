@@ -73,6 +73,13 @@ Elle propose une expérience utilisateur professionnelle, responsive, avec un mo
 > Place tes images dans `src/main/resources/images/` puis référence-les ainsi :
 
 - ![Dashboard](src/main/resources/images/dashbord.png)
+- ![Dashboard](src/main/resources/images/LOGIN.png)
+- ![Dashboard](src/main/resources/images/editProduct.png)
+- ![Dashboard](src/main/resources/images/h2_teste_product.png)
+- ![Dashboard](src/main/resources/images/le_reglage_de_authontification.png)
+- ![Dashboard](src/main/resources/images/newProduct.png)
+- ![Dashboard](src/main/resources/images/notAuthenticated.png)
+- ![Dashboard](src/main/resources/images/HANDL_the_validation_param.png)
 
 ---
 
