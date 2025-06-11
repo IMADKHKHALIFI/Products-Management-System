@@ -18,7 +18,6 @@
 8. [Fonctionnalités principales](#fonctionnalités-principales)
 9. [Captures d’écran](#captures-décran)
 10. [Installation & Lancement](#installation--lancement)
-11. [Remerciements](#remerciements)
 
 ---
 
@@ -177,14 +176,6 @@ src/
 
 ---
 
-## Remerciements
-
-- [Bootstrap](https://getbootstrap.com/)
-- [Thymeleaf](https://www.thymeleaf.org/)
-- [Chart.js](https://www.chartjs.org/)
-- [Spring Boot](https://spring.io/projects/spring-boot)
-
----
 
 ## Auteur
 
