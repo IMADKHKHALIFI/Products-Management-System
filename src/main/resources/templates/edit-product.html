@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Product | GestionProduits+</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body { background: #f6f8fa; }
+        .edit-container {
+            max-width: 500px;
+            margin: 60px auto 0 auto;
+            padding: 0 10px;
+        }
+        .card {
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            animation: fadeInUp 0.7s;
+        }
+        .card-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #007bff;
+            letter-spacing: 1px;
+        }
+        .btn-save {
+            background: linear-gradient(90deg, #007bff 60%, #0056b3 100%);
+            color: #fff;
+            font-weight: 500;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,123,255,0.08);
+            padding: 10px 28px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn-save:hover {
+            background: linear-gradient(90deg, #0056b3 60%, #007bff 100%);
+            color: #fff;
+            transform: translateY(-2px) scale(1.03);
+        }
+        .btn-cancel {
+            background: #f8f9fa;
+            color: #007bff;
+            border: 1px solid #007bff;
+            font-weight: 500;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            margin-left: 10px;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+        .btn-cancel:hover {
+            background: #007bff;
+            color: #fff;
+            transform: translateY(-2px) scale(1.03);
+        }
+        .form-label {
+            font-weight: 500;
+            color: #495057;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.10);
+        }
+        .animate__fadeInDown {
+            --animate-duration: 0.7s;
+        }
+    </style>
+</head>
+<body>
+<div class="edit-container">
+    <div th:if="${success}" class="alert alert-success animate__animated animate__fadeInDown d-flex align-items-center mb-4" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <span th:text="${success}"></span>
+    </div>
+    <div class="card shadow-lg p-4 animate__animated animate__fadeInUp">
+        <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-pencil-square text-primary me-2" style="font-size: 2rem;"></i>
+            <h2 class="card-title mb-0">Edit Product</h2>
+        </div>
+        <form th:action="@{/admin/updateProduct}" th:object="${product}" method="post" autocomplete="off">
+            <!-- Erreurs globales (ex : contraintes de validation non liées à un champ) -->
+            <div th:if="${#fields.hasGlobalErrors()}" class="alert alert-danger mb-3">
+                <ul class="mb-0">
+                    <li th:each="err : ${#fields.globalErrors()}" th:text="${err}"></li>
+                </ul>
+            </div>
+            <input type="hidden" th:field="*{id}" />
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" th:field="*{name}" class="form-control" id="name" required minlength="3" maxlength="50" placeholder="Product name">
+                <div class="text-danger small mt-1" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" th:field="*{price}" class="form-control" id="price" min="0" step="0.01" required placeholder="Product price">
+                <div class="text-danger small mt-1" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+            </div>
+            <div class="mb-4">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" th:field="*{quantity}" class="form-control" id="quantity" min="1" step="1" required placeholder="Product quantity">
+                <div class="text-danger small mt-1" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></div>
+            </div>
+            <div class="d-flex justify-content-center gap-2">
+                <button type="submit" class="btn btn-save animate__animated animate__pulse animate__fast"><i class="bi bi-save me-1"></i> Save</button>
+                <a th:href="@{/user/index}" class="btn btn-cancel animate__animated animate__pulse animate__fast"><i class="bi bi-x-circle me-1"></i> Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.js"></script>
+</body>
+</html>

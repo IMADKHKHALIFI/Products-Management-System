@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Mon Site</title>
+    <title>GestionProduits+</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,43 +18,21 @@
 <body>
 
 <!-- ✅ NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm mb-4">
     <div class="container-fluid">
         <!-- Logo -->
-        <a class="navbar-brand" href="#">MonSite</a>
-
+        <a class="navbar-brand fw-bold text-primary" th:href="@{/}">GestionProduits+</a>
         <!-- Toggle button (responsive) -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSimple" aria-controls="navbarSimple"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="navbarSimple">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
-                <!-- Menu principal -->
-                <li class="nav-item">
-                    <a class="nav-link active" th:href="@{/}">Home</a>
-                </li>
-
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/user/index}">Products</a>
-                </li>
-
-                <!-- Dropdown Services -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Services
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                        <li><a class="dropdown-item" href="#">Service 1</a></li>
-                        <li><a class="dropdown-item" href="#">Service 2</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Autre</a></li>
-                    </ul>
                 </li>
 
                 <!-- Dropdown Username -->
@@ -68,12 +46,21 @@
                             <form th:action="@{/logout}" method="post">
                                 <button type="submit" class="dropdown-item">Logout</button>
                             </form>
-
                         </li>
                     </ul>
                 </li>
-
             </ul>
+            <!-- Barre de recherche produits -->
+            <form class="d-flex ms-3 my-2 my-lg-0" role="search" method="get" th:action="@{/user/index}">
+                <div class="input-group">
+                    <input class="form-control" type="search" name="keyword" placeholder="Rechercher un produit..." aria-label="Search" th:value="${param.keyword}">
+                    <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+                </div>
+            </form>
+            <!-- Dark/Light mode toggle button -->
+            <button id="themeToggle" class="btn btn-outline-secondary ms-3 d-flex align-items-center" type="button" title="Basculer le thème" style="font-size:1.3rem;">
+                <i id="themeIcon" class="bi bi-moon"></i>
+            </button>
         </div>
     </div>
 </nav>
@@ -85,11 +72,76 @@
 
 <!-- ✅ Footer -->
 <footer class="text-center py-3 bg-light mt-5">
-    &copy; 2025 MonSite - Tous droits réservés
+    &copy; 2025 GestionProduits+ - Tous droits réservés
 </footer>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Thème Bootstrap dark/light toggle -->
+<script>
+(function() {
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    function setTheme(theme) {
+        if(theme === 'dark') {
+            document.body.classList.add('bg-dark', 'text-light');
+            document.body.classList.remove('bg-light', 'text-dark');
+            if(themeIcon) {
+                themeIcon.classList.remove('bi-moon');
+                themeIcon.classList.add('bi-sun');
+            }
+            document.querySelectorAll('.card, .table-summary, .chart-container, .navbar, .dropdown-menu, .footer, .modal-content').forEach(e => {
+                e.classList.add('bg-dark', 'text-light', 'border-secondary');
+                e.classList.remove('bg-white', 'bg-light', 'text-dark');
+            });
+            document.querySelectorAll('.btn-primary').forEach(e => {
+                e.classList.add('btn-dark');
+                e.classList.remove('btn-primary');
+            });
+            document.querySelectorAll('.bg-light').forEach(e => {
+                e.classList.add('bg-dark');
+                e.classList.remove('bg-light');
+            });
+        } else {
+            document.body.classList.add('bg-light', 'text-dark');
+            document.body.classList.remove('bg-dark', 'text-light');
+            if(themeIcon) {
+                themeIcon.classList.remove('bi-sun');
+                themeIcon.classList.add('bi-moon');
+            }
+            document.querySelectorAll('.card, .table-summary, .chart-container, .navbar, .dropdown-menu, .footer, .modal-content').forEach(e => {
+                e.classList.add('bg-white', 'bg-light', 'text-dark');
+                e.classList.remove('bg-dark', 'text-light', 'border-secondary');
+            });
+            document.querySelectorAll('.btn-dark').forEach(e => {
+                e.classList.add('btn-primary');
+                e.classList.remove('btn-dark');
+            });
+            document.querySelectorAll('.bg-dark').forEach(e => {
+                e.classList.add('bg-light');
+                e.classList.remove('bg-dark');
+            });
+        }
+        localStorage.setItem('theme', theme);
+    }
+    function getTheme() {
+        return localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+    }
+    function updateTheme() {
+        setTheme(getTheme());
+    }
+    if(themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            const current = getTheme() === 'dark' ? 'light' : 'dark';
+            setTheme(current);
+        });
+        updateTheme();
+    }
+    document.addEventListener('DOMContentLoaded', updateTheme);
+})();
+</script>
 
 </body>
 </html>
