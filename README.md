@@ -1,7 +1,7 @@
 # GestionProduits+ – Application de gestion de produits
 
 ![Dashboard]([https://github.com/IMADKHKHALIFI/Products-Management-System/raw/main/src/main/resources/images/dashboard.png](https://github.com/IMADKHKHALIFI/Products-Management-System/blob/main/src/main/resources/images/dashbord.png))
-![Liste des produits](https://github.com/IMADKHKHALIFI/Products-Management-System/raw/main/src/main/resources/images/index.png)
+![Liste des produits]([https://github.com/IMADKHKHALIFI/Products-Management-System/raw/main/src/main/resources/images/index.png](https://github.com/IMADKHKHALIFI/Products-Management-System/blob/main/src/main/resources/images/index.png))
 
 
 ## 🚀 Présentation
