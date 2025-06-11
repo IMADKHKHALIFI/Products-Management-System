@@ -1,7 +1,7 @@
 # GestionProduits+ – Application de gestion de produits
 
 ![Dashboard](src/main/resources/images/dashbord.png)
-![Liste des produits](images/index.png)
+![Liste des produits](src/main/resources/images/index.png)
 
 
 ## 🚀 Présentation
